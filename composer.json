@@ -1,6 +1,6 @@
 {
     "name": "bantenprov/wilayah-indonesia",
-    "description": "4 Groups Indonesian's Egovernment",
+    "description": "Daftar nama Provinsi, Kabupaten, Kota, Kecamat dan desa yang ada di Indonesia",
     "type": "library",
     "homepage": "https://github.com/bantenprov/wilayah-indonesia",
     "authors": [
