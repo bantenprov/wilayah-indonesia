@@ -1,0 +1,36 @@
+{
+    "name": "bantenprov/wilayah-indonesia",
+    "description": "4 Groups Indonesian's Egovernment",
+    "type": "library",
+    "homepage": "https://github.com/bantenprov/wilayah-indonesia",
+    "authors": [
+        {
+            "name": "bantenprov",
+            "email": "developer.bantenprov@gmail.com",
+            "role": "developer"
+        }
+    ],
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/bantenprov/wilayah-indonesia,",
+        "issues": "https://github.com/bantenprov/wilayah-indonesia/issues",
+        "wiki": "https://github.com/bantenprov/wilayah-indonesia/wiki"
+    },
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0"
+    },
+    "require-dev": {
+        "doctrine/dbal": "^2.5"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers/helpers.php"
+        ],
+        "psr-4": {
+            "Bantenprov\\WilayahIndonesia\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
