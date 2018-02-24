@@ -14,13 +14,6 @@ use Laravolt\Indonesia;
  */
 class WilayahIndonesiaController extends Controller
 {
-	/*
-    public function demo()
-    {
-        return WilayahIndonesia::welcome();
-    }
-	*/
-	
 	//DATA PROVINSI
 	public function provinsiindex()
 	{
