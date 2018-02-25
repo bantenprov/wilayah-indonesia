@@ -18,7 +18,7 @@ composer require bantenprov/wilayah-indonesia:dev-master
 ```
 'providers' => [
 
-    Laravolt\Indonesia\ServiceProvider::class
+    Laravolt\Indonesia\ServiceProvider::class,
 
 ]
 ```
@@ -26,7 +26,7 @@ composer require bantenprov/wilayah-indonesia:dev-master
 ```
 'aliases' => [
 
-    'Indonesia' => Laravolt\Indonesia\Facade::class
+    'Indonesia' => Laravolt\Indonesia\Facade::class,
 
 ]
 ```
