@@ -20,7 +20,10 @@ Add this line of code to config/app.php:
 Type this command to publish components:
 ```
 php artisan vendor:publish --tag=wilayah-indonesia-assets
-php artisan vendor:publish --tag=wilayah-indonesia-public
+```
+To update please use:
+```
+php artisan vendor:publish --tag=wilayah-indonesia-assets --force
 ```
 Add this line of codes to menu.js:
 ```
