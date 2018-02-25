@@ -20,7 +20,7 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravolt/indonesia": "^0.7.0"		
+        "laravolt/indonesia": "^0.7.0"
     },
     "require-dev": {
         "doctrine/dbal": "^2.5"
