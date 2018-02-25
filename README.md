@@ -2,41 +2,12 @@
 Daftar nama Provinsi, Kabupaten, Kota, Kecamat dan desa yang ada di Indonesia
 
 # Dependency Package
-This package is made for Tanara Dashboard, it's need other package:
+This package is made for Tanara Dashboard, it needs other package:
 https://github.com/laravolt/indonesia
+You need to install wilayah-indonesia first then the dependency package.
 
-# Installing Dependency Package (Laravolt\Indonesia\)
-Add this line of cone to:
-```
-'providers' => [
-
-    Laravolt\Indonesia\ServiceProvider::class
-
-]
-```
-
-```
-'aliases' => [
-
-    'Indonesia' => Laravolt\Indonesia\Facade::class
-
-]
-```
-Publish dependency package with this command:
-```
-php artisan vendor:publish --provider="Laravolt\Indonesia\ServiceProvider"
-```
-Run your migrate:
-```
-php artisan migrate
-```
-Fill table with seed:
-```
-php artisan laravolt:indonesia:seed
-```
-
-# Instlaling Wilayah Indonesia to Tanara
-Install Wilayan Indonesia Package:
+# Installing Wilayah Indonesia to Tanara
+Install Wilayah Indonesia Package:
 ```
 composer require bantenprov/wilayah-indonesia
 ```
@@ -131,4 +102,35 @@ import WilayahIndonesiaProvinsiTable from './components/views/bantenprov/wilayah
 Vue.component('wilayah_indonesia_provinsi_table', TableProvinsi);
 
 ```
+
+# Installing Dependency Package (Laravolt\Indonesia\)
+Add this line of code to:
+```
+'providers' => [
+
+    Laravolt\Indonesia\ServiceProvider::class
+
+]
+```
+
+```
+'aliases' => [
+
+    'Indonesia' => Laravolt\Indonesia\Facade::class
+
+]
+```
+Publish dependency package with this command:
+```
+php artisan vendor:publish --provider="Laravolt\Indonesia\ServiceProvider"
+```
+Run your migrate:
+```
+php artisan migrate
+```
+Fill table with seed:
+```
+php artisan laravolt:indonesia:seed
+```
+
 You should see menu Wilayah Indonesia on left side :)
