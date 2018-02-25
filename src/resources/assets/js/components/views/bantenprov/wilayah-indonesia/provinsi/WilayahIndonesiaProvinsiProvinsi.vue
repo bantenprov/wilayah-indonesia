@@ -12,7 +12,7 @@
       <div class="card-header">Example</div>
       <a href="/#/provinsi/form" class="col-2 btn btn-lg btn-primary ml-4 mt-4">Tambah Data</a>
       <div class="card-body">
-        <table_provinsi></table_provinsi>
+        <wilayah_indonesia_provinsi_table></wilayah_indonesia_provinsi_table>
       </div>
     </div><!-- /.card -->
 

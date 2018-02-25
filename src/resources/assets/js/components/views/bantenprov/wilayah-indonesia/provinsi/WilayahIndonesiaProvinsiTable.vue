@@ -12,7 +12,7 @@
     </div>
 
     <vuetable ref="vuetable"
-      api-url="/provinsi/read"
+      api-url="/wilayah-indonesia/provinsiindex"
       :fields="fields"
       :sort-order="sortOrder"
       :css="css.table"
