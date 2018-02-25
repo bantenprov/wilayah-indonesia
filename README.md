@@ -17,6 +17,11 @@ Add this line of code to config/app.php:
 		Bantenprov\WilayahIndonesia\WilayahIndonesiaServiceProvider::class,
 ]
 ```
+Type this command to publish components:
+```
+php artisan vendor:publish --tag=wilayah-indonesia-assets
+php artisan vendor:publish --tag=wilayah-indonesia-public
+```
 Add this line of codes to menu.js:
 ```
   {
