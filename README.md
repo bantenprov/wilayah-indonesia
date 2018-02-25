@@ -51,35 +51,13 @@ php artisan laravolt:indonesia:seed
 		Bantenprov\WilayahIndonesia\WilayahIndonesiaServiceProvider::class,
 ]
 ```
-### Add this line of codes to menu.js:
+
+### Add this line of codes to components.js:
 ```
-  {
-    name: 'Wilayah Indonesia',
-    icon: 'fa fa-play-circle',
-    childType: 'collapse',
-    childItem: [
-		{
-			name: 'Provinsi',
-			link: '/wilayah-indonesia/provinsi',
-			icon: 'fa fa-angle-right'
-		},
-		{
-			name: 'Kabupaten',
-			link: '/wilayah-indonesia/kabupaten',
-			icon: 'fa fa-angle-right'
-		},
-		{
-			name: 'Kecamatan',
-			link: '/wilayah-indonesia/kecamatan',
-			icon: 'fa fa-angle-right'
-		},
-		{
-			name: 'Desa',
-			link: '/wilayah-indonesia/desa',
-			icon: 'fa fa-angle-right'
-		},
-	]
-  },
+//COMPONEN WILAYAH INDONESIA//
+// WILAYAH PROVINSI INDONESIA//
+import WilayahIndonesiaProvinsiTable from './components/views/bantenprov/wilayah-indonesia/provinsi/WilayahIndonesiaProvinsiTable.vue';
+Vue.component('wilayah_indonesia_provinsi_table', TableProvinsi);
 
 ```
 ### Add this line of codes to routes.js:
@@ -128,12 +106,36 @@ php artisan laravolt:indonesia:seed
 	//END ROUTE PROVINSI WILAYAH INDONESIA
 
 ```
-### Add this line of codes to components.js:
+
+### Add this line of codes to menu.js:
 ```
-//COMPONEN WILAYAH INDONESIA//
-// WILAYAH PROVINSI INDONESIA//
-import WilayahIndonesiaProvinsiTable from './components/views/bantenprov/wilayah-indonesia/provinsi/WilayahIndonesiaProvinsiTable.vue';
-Vue.component('wilayah_indonesia_provinsi_table', TableProvinsi);
+  {
+    name: 'Wilayah Indonesia',
+    icon: 'fa fa-play-circle',
+    childType: 'collapse',
+    childItem: [
+		{
+			name: 'Provinsi',
+			link: '/wilayah-indonesia/provinsi',
+			icon: 'fa fa-angle-right'
+		},
+		{
+			name: 'Kabupaten',
+			link: '/wilayah-indonesia/kabupaten',
+			icon: 'fa fa-angle-right'
+		},
+		{
+			name: 'Kecamatan',
+			link: '/wilayah-indonesia/kecamatan',
+			icon: 'fa fa-angle-right'
+		},
+		{
+			name: 'Desa',
+			link: '/wilayah-indonesia/desa',
+			icon: 'fa fa-angle-right'
+		},
+	]
+  },
 
 ```
 
