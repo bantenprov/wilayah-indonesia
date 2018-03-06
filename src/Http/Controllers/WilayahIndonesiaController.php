@@ -153,13 +153,13 @@ class WilayahIndonesiaController extends Controller
 														"district_name"=>$district['name'],
 														"village_name"=>$village['name']
 													];
-							$districts[$key] 		= $data;
+							$villages[$key] 		= $data;
 						}
 					}
 				}			
 			}
 		}
-		return Response::make(json_encode($districts, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
+		return Response::make(json_encode($villages, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
 	}
 	public function desacreate()
 	{
