@@ -7,14 +7,14 @@ https://github.com/laravolt/indonesia
 You need to install wilayah-indonesia first then the dependency package.
 
 ## Installing Wilayah Indonesia to Tanara
-### Install Wilayah Indonesia Package:
+Install Wilayah Indonesia Package:
 ```
 composer require bantenprov/wilayah-indonesia:dev-master
 ```
 
 
 ## Installing Dependency Package (Laravolt\Indonesia\)
-### Add this line of code to:
+Add this line of code to:
 ```
 'providers' => [
 
@@ -30,22 +30,22 @@ composer require bantenprov/wilayah-indonesia:dev-master
 
 ]
 ```
-### Publish dependency package with this command:
+Publish dependency package with this command:
 ```
 php artisan vendor:publish --provider="Laravolt\Indonesia\ServiceProvider"
 ```
-### Run your migrate:
+Run your migrate:
 ```
 php artisan migrate
 ```
-### Fill table with seed:
+Fill table with seed:
 ```
 php artisan laravolt:indonesia:seed
 ```
 
 ## Since now we configure this package.
 
-### Add this line of code to config/app.php:
+Add this line of code to config/app.php:
 ```
 'providers' => [
 		Bantenprov\WilayahIndonesia\WilayahIndonesiaServiceProvider::class,
@@ -62,7 +62,7 @@ php artisan vendor:publish --tag=wilayah-indonesia-assets --force
 Add this line of codes to menu.js:
 =======
 
-### Add this line of codes to components.js:
+Add this line of codes to components.js:
 ```
 //COMPONEN WILAYAH INDONESIA//
 // WILAYAH PROVINSI INDONESIA//
@@ -70,7 +70,7 @@ import WilayahIndonesiaProvinsiTable from './components/views/bantenprov/wilayah
 Vue.component('wilayah_indonesia_provinsi_table', TableProvinsi);
 
 ```
-### Add this line of codes to routes.js:
+Add this line of codes to routes.js:
 ```
   //ROUTE PROVINSI WILAYAH INDONESIA
 	{
@@ -117,7 +117,7 @@ Vue.component('wilayah_indonesia_provinsi_table', TableProvinsi);
 
 ```
 
-### Add this line of codes to menu.js:
+Add this line of codes to menu.js:
 ```
   {
     name: 'Wilayah Indonesia',

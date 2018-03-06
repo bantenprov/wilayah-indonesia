@@ -12,7 +12,7 @@
     </div>
 	
     <vuetable ref="vuetable"
-      api-url="/wilayah-indonesia/provinsi"
+      api-url="/wilayah-indonesia/kabupaten"
       :fields="fields"
       :sort-order="sortOrder"
       :css="css.table"
@@ -59,14 +59,20 @@ export default {
       loading: true,
       fields: [
         {
-          name: 'name',
-          title: 'Province Name',
-          sortField: 'name'
+          name: 'province_name',
+          title: 'Nama Provinsi',
+          sortField: 'province_name'
+        },
+        {
+          name: 'city_name',
+          title: 'Nama Kabupaten',
+          sortField: 'city_name'
         },
         '__slot:actions'
       ],
       sortOrder: [
-        { field: 'name', direction: 'asc' }
+        { field: 'province_name', direction: 'asc' },
+        { field: 'city_name', direction: 'asc' }
       ],
       moreParams: {},
       css: {
