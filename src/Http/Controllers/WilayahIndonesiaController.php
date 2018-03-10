@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Bantenprov\WilayahIndonesia\Facades\WilayahIndonesia;
 use Bantenprov\WilayahIndonesia\Models\Provinsi;
 use Laravolt\Indonesia\Indonesia;
+use Illuminate\Support\Facades\Input;
 use Response;
 /**
  * The WilayahIndonesiaController class.
@@ -55,23 +56,21 @@ class WilayahIndonesiaController extends Controller
 
 	//DATA KABUPATEN
 	public function kabupatenindex()
-	{
-		$page 							= 10;
-		$cities 						= $this->indonesia->paginateCities($page);		
-		foreach($cities as $key => $city){
-			$provinces 					= $this->indonesia->paginateProvinces($city['province_id']);
-			foreach($provinces as $province){
-				if($city['province_id'] == $province['id']){
-					$data 				= 	[
-												"id"=>$city['id'],
-												"province_name"=>$province['name'],
-												"city_name"=>$city['name']
-											];
-					$cities[$key] 		= $data;
-				}
-			}
-		}
-		return Response::make(json_encode($cities, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
+	{	
+		$page  					= 10;
+		$res 					= $this->provinsi
+								->select(
+									'provinces.id as province_id',
+									'provinces.name as province_name',
+									'cities.id as city_id',
+									'cities.name as city_name'
+								)
+								->leftjoin(
+									'cities',
+									'provinces.id','=','cities.province_id'
+								)
+								->paginate($page);
+		return Response::make(json_encode($res, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
 	}
 	public function kabupatencreate()
 	{
@@ -94,26 +93,26 @@ class WilayahIndonesiaController extends Controller
 	//DATA KECAMATAN
 	public function kecamatanindex()
 	{
-		$page 								= 10;
-		$districts 							= $this->indonesia->paginateDistricts($page);
-		foreach($districts as $key => $district){
-			$cities 						= $this->indonesia->paginateCities($district['city_id']);
-			foreach($cities as $key1 => $city){
-				$provinces 					= $this->indonesia->paginateProvinces($city['province_id']);
-				foreach($provinces as $province){
-					if($city['province_id'] == $province['id']){
-						$data 			= 	[
-													"id"=>$district['id'],
-													"province_name"=>$province['name'],
-													"city_name"=>$city['name'],
-													"district_name"=>$district['name']
-												];
-						$districts[$key] 		= $data;
-					}
-				}
-			}			
-		}
-		return Response::make(json_encode($districts, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
+		$page  					= 10;
+		$res 					= $this->provinsi
+								->select(
+									'provinces.id as province_id',
+									'provinces.name as province_name',
+									'cities.id as city_id',
+									'cities.name as city_name',
+									'districts.id as district_id',
+									'districts.name as district_name'
+								)
+								->leftjoin(
+									'cities',
+									'provinces.id','=','cities.province_id'
+								)
+								->leftjoin(
+									'districts',
+									'cities.id','=','districts.city_id'
+								)
+								->paginate($page);
+		return Response::make(json_encode($res, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
 	}
 	public function kecamatancreate()
 	{
@@ -136,30 +135,32 @@ class WilayahIndonesiaController extends Controller
 	//DATA DESA
 	public function desaindex()
 	{
-		$page 								= 10;
-		$villages 							= $this->indonesia->paginateVillages($page);
-		foreach($villages as $key => $village){
-			$districts 							= $this->indonesia->paginateDistricts($village['district_id']);
-			foreach($districts as $key => $district){
-				$cities 						= $this->indonesia->paginateCities($district['city_id']);
-				foreach($cities as $key1 => $city){
-					$provinces 					= $this->indonesia->paginateProvinces($city['province_id']);
-					foreach($provinces as $province){
-						if($city['province_id'] == $province['id']){
-							$data 			= 	[
-														"id"=>$village['id'],
-														"province_name"=>$province['name'],
-														"city_name"=>$city['name'],
-														"district_name"=>$district['name'],
-														"village_name"=>$village['name']
-													];
-							$villages[$key] 		= $data;
-						}
-					}
-				}			
-			}
-		}
-		return Response::make(json_encode($villages, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
+		$page  					= 10;
+		$res 					= $this->provinsi
+								->select(
+									'provinces.id as province_id',
+									'provinces.name as province_name',
+									'cities.id as city_id',
+									'cities.name as city_name',
+									'districts.id as district_id',
+									'districts.name as district_name',
+									'villages.id as village_id',
+									'villages.name as village_name'
+								)
+								->leftjoin(
+									'cities',
+									'provinces.id','=','cities.province_id'
+								)
+								->leftjoin(
+									'districts',
+									'cities.id','=','districts.city_id'
+								)
+								->leftjoin(
+									'villages',
+									'districts.id','=','villages.district_id'
+								)
+								->paginate($page);
+		return Response::make(json_encode($res, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
 	}
 	public function desacreate()
 	{
