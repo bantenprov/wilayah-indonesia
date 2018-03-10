@@ -63,6 +63,63 @@ class WilayahIndonesiaController extends Controller
 		$page 					= 10;
 		if($provinsi == 'provinsi'){
 			$data 					= $this->indonesia->paginateProvinces($page);			
+		}elseif($provinsi == 'kabupaten'){
+			$data 					= $this->provinsi
+									->select(
+										'provinces.id as province_id',
+										'provinces.name as province_name',
+										'cities.id as city_id',
+										'cities.name as city_name'
+									)
+									->leftjoin(
+										'cities',
+										'provinces.id','=','cities.province_id'
+									)
+									->paginate($page);
+		}elseif($provinsi == 'kecamatan'){
+			$data 					= $this->provinsi
+									->select(
+										'provinces.id as province_id',
+										'provinces.name as province_name',
+										'cities.id as city_id',
+										'cities.name as city_name',
+										'districts.id as district_id',
+										'districts.name as district_name'
+									)
+									->leftjoin(
+										'cities',
+										'provinces.id','=','cities.province_id'
+									)
+									->leftjoin(
+										'districts',
+										'cities.id','=','districts.city_id'
+									)
+									->paginate($page);
+		}elseif($provinsi == 'desa'){
+		$data 					= $this->provinsi
+								->select(
+									'provinces.id as province_id',
+									'provinces.name as province_name',
+									'cities.id as city_id',
+									'cities.name as city_name',
+									'districts.id as district_id',
+									'districts.name as district_name',
+									'villages.id as village_id',
+									'villages.name as village_name'
+								)
+								->leftjoin(
+									'cities',
+									'provinces.id','=','cities.province_id'
+								)
+								->leftjoin(
+									'districts',
+									'cities.id','=','districts.city_id'
+								)
+								->leftjoin(
+									'villages',
+									'districts.id','=','villages.district_id'
+								)
+								->paginate($page);
 		}else{
 			$string 				= array('%20','+','-');
 			foreach($string as $val){
@@ -96,7 +153,7 @@ class WilayahIndonesiaController extends Controller
 	public function kabupatenindex()
 	{	
 		$page  					= 10;
-		$res 					= $this->provinsi
+		$data 					= $this->provinsi
 								->select(
 									'provinces.id as province_id',
 									'provinces.name as province_name',
@@ -108,7 +165,7 @@ class WilayahIndonesiaController extends Controller
 									'provinces.id','=','cities.province_id'
 								)
 								->paginate($page);
-		return Response::make(json_encode($res, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
+		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
 	}
 	public function kabupatencreate()
 	{
@@ -131,6 +188,63 @@ class WilayahIndonesiaController extends Controller
 		$page 					= 10;
 		if($provinsi == 'provinsi'){
 			$data 					= $this->indonesia->paginateProvinces($page);			
+		}elseif($provinsi == 'kabupaten'){
+			$data 					= $this->provinsi
+									->select(
+										'provinces.id as province_id',
+										'provinces.name as province_name',
+										'cities.id as city_id',
+										'cities.name as city_name'
+									)
+									->leftjoin(
+										'cities',
+										'provinces.id','=','cities.province_id'
+									)
+									->paginate($page);
+		}elseif($provinsi == 'kecamatan'){
+			$data 					= $this->provinsi
+									->select(
+										'provinces.id as province_id',
+										'provinces.name as province_name',
+										'cities.id as city_id',
+										'cities.name as city_name',
+										'districts.id as district_id',
+										'districts.name as district_name'
+									)
+									->leftjoin(
+										'cities',
+										'provinces.id','=','cities.province_id'
+									)
+									->leftjoin(
+										'districts',
+										'cities.id','=','districts.city_id'
+									)
+									->paginate($page);
+		}elseif($provinsi == 'desa'){
+		$data 					= $this->provinsi
+								->select(
+									'provinces.id as province_id',
+									'provinces.name as province_name',
+									'cities.id as city_id',
+									'cities.name as city_name',
+									'districts.id as district_id',
+									'districts.name as district_name',
+									'villages.id as village_id',
+									'villages.name as village_name'
+								)
+								->leftjoin(
+									'cities',
+									'provinces.id','=','cities.province_id'
+								)
+								->leftjoin(
+									'districts',
+									'cities.id','=','districts.city_id'
+								)
+								->leftjoin(
+									'villages',
+									'districts.id','=','villages.district_id'
+								)
+								->paginate($page);
 		}else{
 			$string 				= array('%20','+','-');
 			foreach($string as $val){
@@ -211,7 +325,7 @@ class WilayahIndonesiaController extends Controller
 	public function kecamatanindex()
 	{
 		$page  					= 10;
-		$res 					= $this->provinsi
+		$data 					= $this->provinsi
 								->select(
 									'provinces.id as province_id',
 									'provinces.name as province_name',
@@ -229,7 +343,7 @@ class WilayahIndonesiaController extends Controller
 									'cities.id','=','districts.city_id'
 								)
 								->paginate($page);
-		return Response::make(json_encode($res, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
+		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
 	}
 	public function kecamatancreate()
 	{
@@ -252,6 +366,63 @@ class WilayahIndonesiaController extends Controller
 		$page 					= 10;
 		if($provinsi == 'provinsi'){
 			$data 					= $this->indonesia->paginateProvinces($page);			
+		}elseif($provinsi == 'kabupaten'){
+			$data 					= $this->provinsi
+									->select(
+										'provinces.id as province_id',
+										'provinces.name as province_name',
+										'cities.id as city_id',
+										'cities.name as city_name'
+									)
+									->leftjoin(
+										'cities',
+										'provinces.id','=','cities.province_id'
+									)
+									->paginate($page);
+		}elseif($provinsi == 'kecamatan'){
+			$data 					= $this->provinsi
+									->select(
+										'provinces.id as province_id',
+										'provinces.name as province_name',
+										'cities.id as city_id',
+										'cities.name as city_name',
+										'districts.id as district_id',
+										'districts.name as district_name'
+									)
+									->leftjoin(
+										'cities',
+										'provinces.id','=','cities.province_id'
+									)
+									->leftjoin(
+										'districts',
+										'cities.id','=','districts.city_id'
+									)
+									->paginate($page);
+		}elseif($provinsi == 'desa'){
+		$data 					= $this->provinsi
+								->select(
+									'provinces.id as province_id',
+									'provinces.name as province_name',
+									'cities.id as city_id',
+									'cities.name as city_name',
+									'districts.id as district_id',
+									'districts.name as district_name',
+									'villages.id as village_id',
+									'villages.name as village_name'
+								)
+								->leftjoin(
+									'cities',
+									'provinces.id','=','cities.province_id'
+								)
+								->leftjoin(
+									'districts',
+									'cities.id','=','districts.city_id'
+								)
+								->leftjoin(
+									'villages',
+									'districts.id','=','villages.district_id'
+								)
+								->paginate($page);
 		}else{
 			$string 				= array('%20','+','-');
 			foreach($string as $val){
@@ -385,7 +556,7 @@ class WilayahIndonesiaController extends Controller
 	public function desaindex()
 	{
 		$page  					= 10;
-		$res 					= $this->provinsi
+		$data 					= $this->provinsi
 								->select(
 									'provinces.id as province_id',
 									'provinces.name as province_name',
@@ -409,7 +580,7 @@ class WilayahIndonesiaController extends Controller
 									'districts.id','=','villages.district_id'
 								)
 								->paginate($page);
-		return Response::make(json_encode($res, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
+		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
 	}
 	public function desacreate()
 	{
