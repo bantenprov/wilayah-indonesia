@@ -26,12 +26,6 @@ class WilayahIndonesiaController extends Controller
 		$this->indonesia 	= new Indonesia;
 		$this->provinsi 	= new Provinsi;
 	}
-	public function provinsisearch($provinsi)
-	{
-		$page 					= 10;
-		$data 					= $this->indonesia->search($provinsi)->paginateProvinces($page);
-		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
-	}
 	public function provinsiindex()
 	{
 		$page 					= 10;

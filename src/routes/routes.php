@@ -4,7 +4,6 @@ Route::group(['prefix' => 'wilayah-indonesia'], function() {
 //    Route::get('demo', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@demo');
 
 	//ROUTE PROVINSI
-    Route::get('/{provinsi}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsisearch');
     Route::get('/provinsi', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsiindex');
     Route::post('/provinsi/create', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsicreate');
     Route::get('/provinsi/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsishow');
