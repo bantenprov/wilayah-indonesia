@@ -101,6 +101,39 @@ Add this line of codes to routes.js:
 				}
 			},
 			{
+				path: '/wilayah-indonesia/kabupaten',
+				components: {
+					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/kabupaten/WilayahIndonesiaKabupaten.vue'], resolve),
+					navbar: resolve => require(['./components/Navbar.vue'], resolve),
+					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+				},
+				meta: {
+					title: "Data Kabupaten"
+				}
+			},
+			{
+				path: '/wilayah-indonesia/kecamatan',
+				components: {
+					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/kecamatan/WilayahIndonesiaKecamatan.vue'], resolve),
+					navbar: resolve => require(['./components/Navbar.vue'], resolve),
+					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+				},
+				meta: {
+					title: "Data Kecamatan"
+				}
+			},
+			{
+				path: '/wilayah-indonesia/desa',
+				components: {
+					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/desa/WilayahIndonesiaDesa.vue'], resolve),
+					navbar: resolve => require(['./components/Navbar.vue'], resolve),
+					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+				},
+				meta: {
+					title: "Data Desa"
+				}
+			},
+			{
 				path: '/wilayah-indonesia/provinsi/form',
 				components: {
 					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/provinsi/WilayahIndonesiaProvinsiForm.vue'], resolve),
@@ -122,6 +155,39 @@ Add this line of codes to routes.js:
 					title: "Data Provinsi"
 				}
 			},
+			{
+				path: '/wilayah-indonesia/:provinsi',
+				components: {
+					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/provinsi/WilayahIndonesiaProvinsi.vue'], resolve),
+					navbar: resolve => require(['./components/Navbar.vue'], resolve),
+					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+				},
+				meta: {
+					title: "Data Provinsi"
+				}
+			},
+			{
+				path: '/wilayah-indonesia/:provinsi/:kabupaten',
+				components: {
+					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/provinsi/WilayahIndonesiaProvinsi.vue'], resolve),
+					navbar: resolve => require(['./components/Navbar.vue'], resolve),
+					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+				},
+				meta: {
+					title: "Data Provinsi"
+				}
+			},
+			{
+				path: '/wilayah-indonesia/:provinsi/:kabupaten/:kecamatan',
+				components: {
+					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/provinsi/WilayahIndonesiaProvinsi.vue'], resolve),
+					navbar: resolve => require(['./components/Navbar.vue'], resolve),
+					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+				},
+				meta: {
+					title: "Data Provinsi"
+				}
+			},
 		]
 	},
 	//END ROUTE PROVINSI WILAYAH INDONESIA
@@ -132,17 +198,6 @@ Add this line of codes to routes.js:
 		redirect: '/wilayah-indonesia/kabupaten',
 		component: layout('Default'),
 		children: [
-			{
-				path: '/wilayah-indonesia/kabupaten',
-				components: {
-					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/kabupaten/WilayahIndonesiaKabupaten.vue'], resolve),
-					navbar: resolve => require(['./components/Navbar.vue'], resolve),
-					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
-				},
-				meta: {
-					title: "Data Kabupaten"
-				}
-			},
 			{
 				path: '/wilayah-indonesia/kabupaten/form',
 				components: {
@@ -176,17 +231,6 @@ Add this line of codes to routes.js:
 		component: layout('Default'),
 		children: [
 			{
-				path: '/wilayah-indonesia/kecamatan',
-				components: {
-					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/kecamatan/WilayahIndonesiaKecamatan.vue'], resolve),
-					navbar: resolve => require(['./components/Navbar.vue'], resolve),
-					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
-				},
-				meta: {
-					title: "Data Kecamatan"
-				}
-			},
-			{
 				path: '/wilayah-indonesia/kecamatan/form',
 				components: {
 					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/kecamatan/WilayahIndonesiaKecamatanForm.vue'], resolve),
@@ -218,17 +262,6 @@ Add this line of codes to routes.js:
 		redirect: '/wilayah-indonesia/desa',
 		component: layout('Default'),
 		children: [
-			{
-				path: '/wilayah-indonesia/desa',
-				components: {
-					main: resolve => require(['./components/views/bantenprov/wilayah-indonesia/desa/WilayahIndonesiaDesa.vue'], resolve),
-					navbar: resolve => require(['./components/Navbar.vue'], resolve),
-					sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
-				},
-				meta: {
-					title: "Data Desa"
-				}
-			},
 			{
 				path: '/wilayah-indonesia/desa/form',
 				components: {

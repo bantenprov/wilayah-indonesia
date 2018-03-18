@@ -12,7 +12,7 @@
     </div>
 	
     <vuetable ref="vuetable"
-      api-url="/wilayah-indonesia/provinsi"
+      :api-url="apiUrl"
       :fields="fields"
       :sort-order="sortOrder"
       :css="css.table"
@@ -57,17 +57,6 @@ export default {
   data () {
     return {
       loading: true,
-      fields: [
-        {
-          name: 'name',
-          title: 'Province Name',
-          sortField: 'name'
-        },
-        '__slot:actions'
-      ],
-      sortOrder: [
-        { field: 'name', direction: 'asc' }
-      ],
       moreParams: {},
       css: {
         table: {
@@ -165,6 +154,194 @@ export default {
       this.moreParams = {}
       Vue.nextTick( () => this.$refs.vuetable.refresh() )
     }
-  }
+  },
+	computed: {
+		apiUrl: function (ref){
+			if (typeof this.$route.params.provinsi !== 'undefined'){
+				if(this.$route.params.provinsi == 'provinsi'){
+					var url = "/wilayah-indonesia/provinsi";
+				}else if(this.$route.params.provinsi == 'kabupaten'){
+					var url = "/wilayah-indonesia/kabupaten";						
+				}else if(this.$route.params.provinsi == 'kecamatan'){
+					var url = "/wilayah-indonesia/kecamatan";						
+				}else if(this.$route.params.provinsi == 'desa'){
+					var url = "/wilayah-indonesia/desa";						
+				}else{
+					if(typeof this.$route.params.kabupaten !== 'undefined'){
+						if (typeof this.$route.params.kecamatan !== 'undefined'){
+							var url = "/wilayah-indonesia/" + this.$route.params.provinsi + "/" + this.$route.params.kabupaten + "/" + this.$route.params.kecamatan;
+						}else{
+							var url = "/wilayah-indonesia/" + this.$route.params.provinsi + "/" + this.$route.params.kabupaten;
+						}
+					}else{
+						var url = "/wilayah-indonesia/" + this.$route.params.provinsi;
+					}
+				}					
+			}else{
+				var url = "/wilayah-indonesia/provinsi";
+			}		
+			return url;
+		},
+		fields: function(){
+			if (typeof this.$route.params.provinsi !== 'undefined'){
+				if(this.$route.params.provinsi == 'provinsi'){
+					var kolom = [
+						{
+						  name: 'name',
+						  title: 'Province Name',
+						  sortField: 'name'
+						},
+						'__slot:actions'
+					];
+				}else if(this.$route.params.provinsi == 'kabupaten'){
+					var kolom = [
+						{
+						  name: 'name',
+						  title: 'Province Name',
+						  sortField: 'name'
+						},
+						{
+						  name: 'city_name',
+						  title: 'Nama Kabupaten',
+						  sortField: 'city_name'
+						},
+						'__slot:actions'
+					];
+				}else if(this.$route.params.provinsi == 'kecamatan'){
+					var kolom = [
+						{
+							name: 'province_name',
+							title: 'Nama Provinsi',
+							sortField: 'province_name'
+						},
+						{
+							name: 'city_name',
+							title: 'Nama Kabupaten',
+							sortField: 'city_name'
+						},
+						{
+							name: 'district_name',
+							title: 'Nama Kecamatan',
+							sortField: 'district_name'
+						},
+						'__slot:actions'
+					];
+				}else if(this.$route.params.provinsi == 'desa'){
+					var kolom = [
+						{
+							name: 'province_name',
+							title: 'Nama Provinsi',
+							sortField: 'province_name'
+						},
+						{
+							name: 'city_name',
+							title: 'Nama Kabupaten',
+							sortField: 'city_name'
+						},
+						{
+							name: 'district_name',
+							title: 'Nama Kecamatan',
+							sortField: 'district_name'
+						},
+						{
+							name: 'village_name',
+							title: 'Nama Desa',
+							sortField: 'village_name'
+						},
+						'__slot:actions'
+					];
+				}else{
+					if(typeof this.$route.params.kabupaten !== 'undefined'){
+						if (typeof this.$route.params.kecamatan !== 'undefined'){
+							var kolom = [
+								{
+									name: 'village_name',
+									title: 'Nama Desa',
+									sortField: 'village_name'
+								},
+								'__slot:actions'
+							];
+						}else{
+							var kolom = [
+								{
+									name: 'district_name',
+									title: 'Nama Kecamatan',
+									sortField: 'district_name'
+								},
+								'__slot:actions'
+							];
+						}
+					}else{
+						var kolom = [
+							{
+							  name: 'city_name',
+							  title: 'Nama Kabupaten',
+							  sortField: 'city_name'
+							},
+							'__slot:actions'
+						];
+					}
+				}
+			}else{
+				var kolom = [
+					{
+					  name: 'name',
+					  title: 'Province Name',
+					  sortField: 'name'
+					},
+					'__slot:actions'
+				];
+			}		
+			return kolom;
+		},
+		sortOrder: function(){
+			if (typeof this.$route.params.provinsi !== 'undefined'){
+				if(this.$route.params.provinsi == 'provinsi'){
+					var sort = [
+						{ field: 'name', direction: 'asc' }
+					];
+				}else if(this.$route.params.provinsi == 'kabupaten'){
+					var sort = [
+						{ field: 'province_name', direction: 'asc' },
+						{ field: 'city_name', direction: 'asc' }
+					];
+				}else if(this.$route.params.provinsi == 'kecamatan'){
+					var sort = [
+						{ field: 'province_name', direction: 'asc' },
+						{ field: 'city_name', direction: 'asc' },
+						{ field: 'district_name', direction: 'asc' }
+					];
+				}else if(this.$route.params.provinsi == 'desa'){
+					var sort = [
+						{ field: 'province_name', direction: 'asc' },
+						{ field: 'city_name', direction: 'asc' },
+						{ field: 'district_name', direction: 'asc' },
+						{ field: 'village_name', direction: 'asc' }
+					];
+				}else{
+					if(typeof this.$route.params.kabupaten !== 'undefined'){
+						if (typeof this.$route.params.kecamatan !== 'undefined'){
+							var sort = [
+								{ field: 'village_name', direction: 'asc' }
+							];
+						}else{
+							var sort = [
+								{ field: 'district_name', direction: 'asc' }
+							];
+						}
+					}else{
+						var sort = [
+							{ field: 'city_name', direction: 'asc' }
+						];
+					}
+				}					
+			}else{
+				var sort = [
+					{ field: 'name', direction: 'asc' }
+				];
+			}		
+			return sort;
+		}
+	},
 }
 </script>
