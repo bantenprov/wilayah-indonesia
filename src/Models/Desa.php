@@ -15,7 +15,7 @@ class Desa extends Model
     *
     * @var string
     */
-    protected $table = 'villages';
+    protected $table = 'indonesia_villages';
 
     /**
     * The attributes that are mass assignable.
@@ -29,7 +29,8 @@ class Desa extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden 	= [];
+	public $timestamps 	= false;
 
 	public function kecamatan(){
 		return $this->belongsTo('Bantenprov\WilayahIndonesia\Models\Kecamatan','district_id');

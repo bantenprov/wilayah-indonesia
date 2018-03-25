@@ -15,7 +15,7 @@ class Kecamatan extends Model
     *
     * @var string
     */
-    protected $table = 'districts';
+    protected $table = 'indonesia_districts';
 
     /**
     * The attributes that are mass assignable.
@@ -29,8 +29,9 @@ class Kecamatan extends Model
      *
      * @var array
      */
-    protected $hidden = [];
-	
+    protected $hidden 	= [];
+	public $timestamps 	= false;
+
 	public function desa(){
 		return $this->hasMany('Bantenprov\WilayahIndonesia\Models\Desa','district_id');
 	}

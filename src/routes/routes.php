@@ -1,22 +1,25 @@
 <?php
 
 Route::group(['prefix' => 'wilayah-indonesia'], function() {
-//    Route::get('demo', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@demo');
 
 	//ROUTE PROVINSI
     Route::get('/provinsi', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsiindex');
-    Route::post('/provinsi/create', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsicreate');
-    Route::get('/provinsi/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsishow');
+    Route::post('/provinsi', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsicreate');
+    Route::get('/provinsi/option', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsioption');
+    Route::post('/provinsi/delete', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsidelete');
     Route::post('/provinsi/{id}/edit', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsiedit');
-    Route::post('/provinsi/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsidelete');
+    Route::get('/provinsi/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsishow');
+    Route::get('/{provinsi}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@provinsisearch');
 	//END ROUTE PROVINSI
 
 	//ROUTE KABUPATEN
     Route::get('/kabupaten', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatenindex');
-    Route::post('/kabupaten/create', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatencreate');
-    Route::get('/kabupaten/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatenshow');
+    Route::post('/kabupaten', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatencreate');
+    Route::get('/kabupaten/option', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatenoption');
+    Route::post('/kabupaten/delete', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatendelete');
     Route::post('/kabupaten/{id}/edit', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatenedit');
-    Route::post('/kabupaten/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatendelete');
+    Route::get('/kabupaten/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatenshow');
+    Route::get('/{provinsi}/{kabupaten}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kabupatensearch');
 	//END ROUTE KABUPATEN
 
 	//ROUTE KECAMATAN
@@ -25,6 +28,7 @@ Route::group(['prefix' => 'wilayah-indonesia'], function() {
     Route::get('/kecamatan/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kecamatanshow');
     Route::post('/kecamatan/{id}/edit', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kecamatanedit');
     Route::post('/kecamatan/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kecamatandelete');
+    Route::get('/{provinsi}/{kabupaten}/{kecamatan}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kecamatansearch');
 	//END ROUTE KECAMATAN
 	
 	//ROUTE DESA
