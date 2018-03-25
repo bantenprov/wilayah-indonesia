@@ -15,7 +15,7 @@ class Kabupaten extends Model
     *
     * @var string
     */
-    protected $table = 'cities';
+    protected $table = 'indonesia_cities';
 
     /**
     * The attributes that are mass assignable.
@@ -29,7 +29,8 @@ class Kabupaten extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden 	= [];
+	public $timestamps 	= false;
 	
 	public function kecamatan(){
 		return $this->hasMany('Bantenprov\WilayahIndonesia\Models\Kecamatan','city_id');
