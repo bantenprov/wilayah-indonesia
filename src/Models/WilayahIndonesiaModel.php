@@ -8,38 +8,14 @@ use Illuminate\Database\Eloquent\Model;
  * @package Bantenprov\WilayahIndonesia
  * @author  bantenprov <developer.bantenprov@gmail.com>
  */
-class Provinsi extends Model
+class WilayahIndonesiaModel extends Model
 {
     /**
     * Table name.
     *
     * @var string
     */
-    protected $table = 'provinces';
-
-    /**
-    * The attributes that are mass assignable.
-    *
-    * @var mixed
-    */
-    protected $fillable = [];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [];
-}
-
-class Kabupaten extends Model
-{
-    /**
-    * Table name.
-    *
-    * @var string
-    */
-    protected $table = 'districts';
+    protected $table = 'wilayah_indonesia';
 
     /**
     * The attributes that are mass assignable.

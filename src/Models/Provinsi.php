@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Provinsi extends Model
 {
-    /**
+	/**
     * Table name.
     *
     * @var string
     */
-    protected $table = 'provinces';
+    protected $table = 'indonesia_provinces';
 
     /**
     * The attributes that are mass assignable.
@@ -29,7 +29,8 @@ class Provinsi extends Model
      *
      * @var array
      */
-    protected $hidden = [];
+    protected $hidden 	= [];
+	public $timestamps 	= false;
 	
 	public function kabupaten()
     {
