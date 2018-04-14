@@ -30,12 +30,17 @@ Route::group(['prefix' => 'wilayah-indonesia'], function() {
     Route::post('/kecamatan/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kecamatandelete');
     Route::get('/{provinsi}/{kabupaten}/{kecamatan}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@kecamatansearch');
 	//END ROUTE KECAMATAN
-	
+
 	//ROUTE DESA
     Route::get('/desa', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@desaindex');
     Route::post('/desa/create', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@desacreate');
     Route::get('/desa/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@desashow');
     Route::post('/desa/{id}/edit', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@desaedit');
     Route::post('/desa/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\WilayahIndonesiaController@desadelete');
-	//END ROUTE DESA
+    //END ROUTE DESA
+
+});
+
+Route::group(['prefix' => 'api/wilayah-indonesia'], function() {
+    Route::get('/province/all-villages/{id?}', 'Bantenprov\WilayahIndonesia\Http\Controllers\ProvinceController@allVillages');
 });

@@ -23,7 +23,7 @@ class WilayahIndonesiaController extends Controller
 	protected $kabupaten;
 	protected $kecamatan;
 	protected $desa;
-	
+
 	public function __construct()
 	{
 		$this->indonesia 	= new Indonesia;
@@ -54,12 +54,12 @@ class WilayahIndonesiaController extends Controller
 		}else{
 			$res['message']    		= 'Error';
 		}
-        return json_encode($res);		
+        return json_encode($res);
 	}
 	public function provinsishow($id)
 	{
 		$data 						= $this->provinsi->find($id);
-		return json_encode($data);		
+		return json_encode($data);
 	}
 	public function provinsiedit($id)
 	{
@@ -72,7 +72,7 @@ class WilayahIndonesiaController extends Controller
 		}else{
 			$res['message']    = 'Fail';
 		}
-        return json_encode($res);				
+        return json_encode($res);
 	}
 	public function provinsidelete()
 	{
@@ -85,13 +85,13 @@ class WilayahIndonesiaController extends Controller
 		}else{
 			$res['message']    		= 'Error';
 		}
-        return json_encode($res);		
+        return json_encode($res);
 	}
 	public function provinsisearch($provinsi)
-	{		
+	{
 		$page 					= 10;
 		if($provinsi == 'provinsi'){
-			$data 					= $this->indonesia->paginateProvinces($page);			
+			$data 					= $this->indonesia->paginateProvinces($page);
 		}elseif($provinsi == 'kabupaten'){
 			$data 					= $this->provinsi
 									->select(
@@ -171,7 +171,7 @@ class WilayahIndonesiaController extends Controller
 										->where('indonesia_cities.province_id','=',$provinsi)
 										->paginate($page);
 			}else{
-				$data 					= $this->indonesia->paginateProvinces($page);							
+				$data 					= $this->indonesia->paginateProvinces($page);
 			}
 		}
 		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
@@ -180,7 +180,7 @@ class WilayahIndonesiaController extends Controller
 
 	//DATA KABUPATEN
 	public function kabupatenindex()
-	{	
+	{
 		$page  					= 10;
 		$data 					= $this->provinsi
 								->select(
@@ -252,13 +252,13 @@ class WilayahIndonesiaController extends Controller
 		}else{
 			$res['message']    		= 'Error';
 		}
-        return json_encode($res);		
+        return json_encode($res);
 	}
 	public function kabupatensearch($provinsi,$kabupaten)
-	{		
+	{
 		$page 						= 10;
 		if($provinsi == 'provinsi'){
-			$data 					= $this->indonesia->paginateProvinces($page);			
+			$data 					= $this->indonesia->paginateProvinces($page);
 		}elseif($provinsi == 'kabupaten'){
 			$data 					= $this->provinsi
 									->select(
@@ -344,11 +344,11 @@ class WilayahIndonesiaController extends Controller
 					if(isset($kab[0]->id)){
 						$kabupaten 			= $kab[0]->id;
 					}elseif(isset($kab1[0]->id)){
-						$kabupaten 			= $kab1[0]->id;						
+						$kabupaten 			= $kab1[0]->id;
 					}elseif(isset($kab2[0]->id)){
-						$kabupaten 			= $kab2[0]->id;						
+						$kabupaten 			= $kab2[0]->id;
 					}elseif(isset($kab3[0]->id)){
-						$kabupaten 			= $kab3[0]->id;						
+						$kabupaten 			= $kab3[0]->id;
 					}
 					$data 					= $this->provinsi
 											->select(
@@ -385,13 +385,13 @@ class WilayahIndonesiaController extends Controller
 											->paginate($page);
 				}
 			}else{
-				$data 					= $this->indonesia->paginateProvinces($page);							
+				$data 					= $this->indonesia->paginateProvinces($page);
 			}
 		}
 		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
 	}
 	//END DATA KABUPATEN
-	
+
 	//DATA KECAMATAN
 	public function kecamatanindex()
 	{
@@ -414,29 +414,29 @@ class WilayahIndonesiaController extends Controller
 									'indonesia_cities.id','=','indonesia_districts.city_id'
 								)
 								->paginate($page);
-		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
+		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
 	}
 	public function kecamatancreate()
 	{
-		
+
 	}
 	public function kecamatanshow()
 	{
-		
+
 	}
 	public function kecamatanedit()
 	{
-		
+
 	}
 	public function kecamatandelete()
 	{
-		
+
 	}
 	public function kecamatansearch($provinsi,$kabupaten,$kecamatan)
-	{		
+	{
 		$page 					= 10;
 		if($provinsi == 'provinsi'){
-			$data 					= $this->indonesia->paginateProvinces($page);			
+			$data 					= $this->indonesia->paginateProvinces($page);
 		}elseif($provinsi == 'kabupaten'){
 			$data 					= $this->provinsi
 									->select(
@@ -522,11 +522,11 @@ class WilayahIndonesiaController extends Controller
 					if(isset($kab[0]->id)){
 						$kabupaten 			= $kab[0]->id;
 					}elseif(isset($kab1[0]->id)){
-						$kabupaten 			= $kab1[0]->id;						
+						$kabupaten 			= $kab1[0]->id;
 					}elseif(isset($kab2[0]->id)){
-						$kabupaten 			= $kab2[0]->id;						
+						$kabupaten 			= $kab2[0]->id;
 					}elseif(isset($kab3[0]->id)){
-						$kabupaten 			= $kab3[0]->id;						
+						$kabupaten 			= $kab3[0]->id;
 					}
 					foreach($string as $val){
 						$kecamatan 				= strtoupper(str_replace($val,' ',$kecamatan));
@@ -548,11 +548,11 @@ class WilayahIndonesiaController extends Controller
 						if(isset($kec[0]->id)){
 							$kecamatan 			= $kec[0]->id;
 						}elseif(isset($kec1[0]->id)){
-							$kecamatan 			= $kec1[0]->id;						
+							$kecamatan 			= $kec1[0]->id;
 						}elseif(isset($kec2[0]->id)){
-							$kecamatan 			= $kec2[0]->id;						
+							$kecamatan 			= $kec2[0]->id;
 						}elseif(isset($kec3[0]->id)){
-							$kecamatan 			= $kec3[0]->id;						
+							$kecamatan 			= $kec3[0]->id;
 						}
 						$data 					= $this->provinsi
 												->select(
@@ -598,7 +598,7 @@ class WilayahIndonesiaController extends Controller
 													'indonesia_cities.id','=','indonesia_districts.city_id'
 												)
 												->where('indonesia_districts.city_id','=',$kabupaten)
-												->paginate($page);						
+												->paginate($page);
 					}
 				}else{
 					$data 					= $this->provinsi
@@ -616,7 +616,7 @@ class WilayahIndonesiaController extends Controller
 											->paginate($page);
 				}
 			}else{
-				$data 					= $this->indonesia->paginateProvinces($page);							
+				$data 					= $this->indonesia->paginateProvinces($page);
 			}
 		}
 		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
@@ -651,24 +651,24 @@ class WilayahIndonesiaController extends Controller
 									'indonesia_districts.id','=','indonesia_villages.district_id'
 								)
 								->paginate($page);
-		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");		
+		return Response::make(json_encode($data, JSON_PRETTY_PRINT))->header('Content-Type', "application/json");
 	}
 	public function desacreate()
 	{
-		
+
 	}
 	public function desashow()
 	{
-		
+
 	}
 	public function desaedit()
 	{
-		
+
 	}
 	public function desadelete()
 	{
-		
+
 	}
 	//END DATA DESA
-	
+
 }
