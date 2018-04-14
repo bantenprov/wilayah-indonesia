@@ -1,4 +1,6 @@
-<?php namespace Bantenprov\WilayahIndonesia;
+<?php
+
+namespace Bantenprov\WilayahIndonesia;
 
 /**
  * The WilayahIndonesia class.
