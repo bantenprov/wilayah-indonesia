@@ -42,5 +42,18 @@ Route::group(['prefix' => 'wilayah-indonesia'], function() {
 });
 
 Route::group(['prefix' => 'api/wilayah-indonesia'], function() {
-    Route::get('/province/all-villages/{id?}', 'Bantenprov\WilayahIndonesia\Http\Controllers\ProvinceController@allVillages');
+    Route::get('/province', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allProvince');
+    Route::get('/province/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailProvince');
+
+    Route::get('/city', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allCity');
+    Route::get('/city/province/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allCityByProvince');
+    Route::get('/city/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailCity');
+
+    Route::get('/district', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allDistrict');
+    Route::get('/district/city/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allDistrictByCity');
+    Route::get('/district/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailDistrict');
+
+    Route::get('/village', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allVillage');
+    Route::get('/village/district/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allVillageByDistrict');
+    Route::get('/village/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailVillage');
 });
