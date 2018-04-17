@@ -22,13 +22,17 @@ use Laravolt\Indonesia\Models\Village;
  */
 class LocationController extends Controller
 {
+    protected $indonesia;
+    protected $province;
+    protected $city;
+    protected $district;
+    protected $village;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    protected $user;
-
     public function __construct()
     {
 		$this->indonesia    = new Indonesia;
