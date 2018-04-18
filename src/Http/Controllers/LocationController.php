@@ -55,7 +55,9 @@ class LocationController extends Controller
             array_set($province, 'label', $province->name);
         }
 
-        $response['province']   = $provinces;
+        $response['provinces']  = $provinces;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -72,7 +74,9 @@ class LocationController extends Controller
 
         array_set($provinces, 'label', $provinces->name);
 
-        $response['province']   = $provinces;
+        $response['provinces']  = $provinces;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -91,8 +95,10 @@ class LocationController extends Controller
             array_set($city, 'label', $city->name);
         }
 
-        $response['city']   = $cities;
-        $response['status'] = true;
+        $response['cities']     = $cities;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
+        $response['status']     = true;
 
         return response()->json($response);
     }
@@ -116,8 +122,10 @@ class LocationController extends Controller
             array_set($city, 'label', $city->name);
         }
 
-        $response['city']   = $cities;
-        $response['status'] = true;
+        $response['cities']     = $cities;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
+        $response['status']     = true;
 
         return response()->json($response);
     }
@@ -129,12 +137,14 @@ class LocationController extends Controller
      */
     public function detailCity($id)
     {
-        $cities = $this->indonesia->findCity($id);
+        $city = $this->indonesia->findCity($id);
 
-        array_set($cities, 'label', $cities->name);
+        array_set($city, 'label', $city->name);
 
-        $response['city']   = $cities;
-        $response['status'] = true;
+        $response['city']       = $city;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
+        $response['status']     = true;
 
         return response()->json($response);
     }
@@ -152,7 +162,9 @@ class LocationController extends Controller
             array_set($district, 'label', $district->name);
         }
 
-        $response['district']   = $districts;
+        $response['districts']  = $districts;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -177,7 +189,9 @@ class LocationController extends Controller
             array_set($district, 'label', $district->name);
         }
 
-        $response['district']   = $districts;
+        $response['districts']  = $districts;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -190,11 +204,13 @@ class LocationController extends Controller
      */
     public function detailDistrict($id)
     {
-        $districts = $this->indonesia->findDistrict($id);
+        $district = $this->indonesia->findDistrict($id);
 
-        array_set($districts, 'label', $districts->name);
+        array_set($district, 'label', $district->name);
 
-        $response['district']   = $districts;
+        $response['district']   = $district;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -213,7 +229,9 @@ class LocationController extends Controller
             array_set($village, 'label', $village->name);
         }
 
-        $response['village']    = $villages;
+        $response['villages']   = $villages;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -238,7 +256,9 @@ class LocationController extends Controller
             array_set($village, 'label', $village->name);
         }
 
-        $response['village']    = $villages;
+        $response['villages']   = $villages;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
@@ -251,11 +271,13 @@ class LocationController extends Controller
      */
     public function detailVillage($id)
     {
-        $villages = $this->indonesia->findVillage($id);
+        $village = $this->indonesia->findVillage($id);
 
-        array_set($villages, 'label', $villages->name);
+        array_set($village, 'label', $village->name);
 
-        $response['village']    = $villages;
+        $response['village']    = $village;
+        $response['message']    = 'Loaded';
+        $response['error']      = false;
         $response['status']     = true;
 
         return response()->json($response);
