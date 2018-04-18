@@ -80,15 +80,15 @@ Route::group(['prefix' => 'api/wilayah-indonesia/city', 'middleware' => ['web']]
         'destroy'       => $class.'@destroy',
     ];
 
-    Route::get('/',             $controllers->index)->name($name.'.index');
-    Route::get('/get',          $controllers->get)->name($name.'.get');
-    Route::get('/get/{id}',     $controllers->getByProvince)->name($name.'.get-by-province');
-    Route::get('/create',       $controllers->create)->name($name.'.create');
-    Route::get('/{id}',         $controllers->show)->name($name.'.show');
-    Route::post('/',            $controllers->store)->name($name.'.store');
-    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
-    Route::put('/{id}',         $controllers->update)->name($name.'.update');
-    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
+    Route::get('/',                     $controllers->index)->name($name.'.index');
+    Route::get('/get',                  $controllers->get)->name($name.'.get');
+    Route::get('/get/by-province/{id}', $controllers->getByProvince)->name($name.'.get-by-province');
+    Route::get('/create',               $controllers->create)->name($name.'.create');
+    Route::get('/{id}',                 $controllers->show)->name($name.'.show');
+    Route::post('/',                    $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',            $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',                 $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',              $controllers->destroy)->name($name.'.destroy');
 });
 
 Route::group(['prefix' => 'api/wilayah-indonesia/district', 'middleware' => ['web']], function() {
@@ -106,15 +106,15 @@ Route::group(['prefix' => 'api/wilayah-indonesia/district', 'middleware' => ['we
         'destroy'   => $class.'@destroy',
     ];
 
-    Route::get('/',             $controllers->index)->name($name.'.index');
-    Route::get('/get',          $controllers->get)->name($name.'.get');
-    Route::get('/get/{id}',     $controllers->getByCity)->name($name.'.get-by-city');
-    Route::get('/create',       $controllers->create)->name($name.'.create');
-    Route::get('/{id}',         $controllers->show)->name($name.'.show');
-    Route::post('/',            $controllers->store)->name($name.'.store');
-    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
-    Route::put('/{id}',         $controllers->update)->name($name.'.update');
-    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
+    Route::get('/',                 $controllers->index)->name($name.'.index');
+    Route::get('/get',              $controllers->get)->name($name.'.get');
+    Route::get('/get/by-city/{id}', $controllers->getByCity)->name($name.'.get-by-city');
+    Route::get('/create',           $controllers->create)->name($name.'.create');
+    Route::get('/{id}',             $controllers->show)->name($name.'.show');
+    Route::post('/',                $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',        $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',             $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',          $controllers->destroy)->name($name.'.destroy');
 });
 
 Route::group(['prefix' => 'api/wilayah-indonesia/village', 'middleware' => ['web']], function() {
@@ -132,13 +132,13 @@ Route::group(['prefix' => 'api/wilayah-indonesia/village', 'middleware' => ['web
         'destroy'       => $class.'@destroy',
     ];
 
-    Route::get('/',             $controllers->index)->name($name.'.index');
-    Route::get('/get',          $controllers->get)->name($name.'.get');
-    Route::get('/get/{id}',     $controllers->getByDistrict)->name($name.'.get-by-district');
-    Route::get('/create',       $controllers->create)->name($name.'.create');
-    Route::get('/{id}',         $controllers->show)->name($name.'.show');
-    Route::post('/',            $controllers->store)->name($name.'.store');
-    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
-    Route::put('/{id}',         $controllers->update)->name($name.'.update');
-    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
+    Route::get('/',                     $controllers->index)->name($name.'.index');
+    Route::get('/get',                  $controllers->get)->name($name.'.get');
+    Route::get('/get/by-district/{id}', $controllers->getByDistrict)->name($name.'.get-by-district');
+    Route::get('/create',               $controllers->create)->name($name.'.create');
+    Route::get('/{id}',                 $controllers->show)->name($name.'.show');
+    Route::post('/',                    $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',            $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',                 $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',              $controllers->destroy)->name($name.'.destroy');
 });
