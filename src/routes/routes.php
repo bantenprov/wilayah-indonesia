@@ -41,19 +41,104 @@ Route::group(['prefix' => 'wilayah-indonesia'], function() {
 
 });
 
-Route::group(['prefix' => 'api/wilayah-indonesia'], function() {
-    Route::get('/province', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allProvince');
-    Route::get('/province/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailProvince');
+Route::group(['prefix' => 'api/wilayah-indonesia/province', 'middleware' => ['web']], function() {
+    $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\ProvinceController';
+    $name           = 'wilayah-indonesia.province';
+    $controllers    = (object) [
+        'index'     => $class.'@index',
+        'get'       => $class.'@get',
+        'create'    => $class.'@create',
+        'show'      => $class.'@show',
+        'store'     => $class.'@store',
+        'edit'      => $class.'@edit',
+        'update'    => $class.'@update',
+        'destroy'   => $class.'@destroy',
+    ];
 
-    Route::get('/city', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allCity');
-    Route::get('/city/province/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allCityByProvince');
-    Route::get('/city/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailCity');
+    Route::get('/',             $controllers->index)->name($name.'.index');
+    Route::get('/get',          $controllers->get)->name($name.'.get');
+    Route::get('/create',       $controllers->create)->name($name.'.create');
+    Route::get('/{id}',         $controllers->show)->name($name.'.show');
+    Route::post('/',            $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',         $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
+});
 
-    Route::get('/district', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allDistrict');
-    Route::get('/district/city/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allDistrictByCity');
-    Route::get('/district/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailDistrict');
+Route::group(['prefix' => 'api/wilayah-indonesia/city', 'middleware' => ['web']], function() {
+    $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\CityController';
+    $name           = 'wilayah-indonesia.city';
+    $controllers    = (object) [
+        'index'         => $class.'@index',
+        'get'           => $class.'@get',
+        'getByProvince' => $class.'@getByProvince',
+        'create'        => $class.'@create',
+        'show'          => $class.'@show',
+        'store'         => $class.'@store',
+        'edit'          => $class.'@edit',
+        'update'        => $class.'@update',
+        'destroy'       => $class.'@destroy',
+    ];
 
-    Route::get('/village', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allVillage');
-    Route::get('/village/district/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@allVillageByDistrict');
-    Route::get('/village/{id}', 'Bantenprov\WilayahIndonesia\Http\Controllers\LocationController@detailVillage');
+    Route::get('/',             $controllers->index)->name($name.'.index');
+    Route::get('/get',          $controllers->get)->name($name.'.get');
+    Route::get('/get/{id}',     $controllers->getByProvince)->name($name.'.get-by-province');
+    Route::get('/create',       $controllers->create)->name($name.'.create');
+    Route::get('/{id}',         $controllers->show)->name($name.'.show');
+    Route::post('/',            $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',         $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
+});
+
+Route::group(['prefix' => 'api/wilayah-indonesia/district', 'middleware' => ['web']], function() {
+    $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\DistrictController';
+    $name           = 'wilayah-indonesia.district';
+    $controllers    = (object) [
+        'index'     => $class.'@index',
+        'get'       => $class.'@get',
+        'getByCity' => $class.'@getByCity',
+        'create'    => $class.'@create',
+        'show'      => $class.'@show',
+        'store'     => $class.'@store',
+        'edit'      => $class.'@edit',
+        'update'    => $class.'@update',
+        'destroy'   => $class.'@destroy',
+    ];
+
+    Route::get('/',             $controllers->index)->name($name.'.index');
+    Route::get('/get',          $controllers->get)->name($name.'.get');
+    Route::get('/get/{id}',     $controllers->getByCity)->name($name.'.get-by-city');
+    Route::get('/create',       $controllers->create)->name($name.'.create');
+    Route::get('/{id}',         $controllers->show)->name($name.'.show');
+    Route::post('/',            $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',         $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
+});
+
+Route::group(['prefix' => 'api/wilayah-indonesia/village', 'middleware' => ['web']], function() {
+    $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\VillageController';
+    $name           = 'wilayah-indonesia.village';
+    $controllers    = (object) [
+        'index'         => $class.'@index',
+        'get'           => $class.'@get',
+        'getByDistrict' => $class.'@getByDistrict',
+        'create'        => $class.'@create',
+        'show'          => $class.'@show',
+        'store'         => $class.'@store',
+        'edit'          => $class.'@edit',
+        'update'        => $class.'@update',
+        'destroy'       => $class.'@destroy',
+    ];
+
+    Route::get('/',             $controllers->index)->name($name.'.index');
+    Route::get('/get',          $controllers->get)->name($name.'.get');
+    Route::get('/get/{id}',     $controllers->getByDistrict)->name($name.'.get-by-district');
+    Route::get('/create',       $controllers->create)->name($name.'.create');
+    Route::get('/{id}',         $controllers->show)->name($name.'.show');
+    Route::post('/',            $controllers->store)->name($name.'.store');
+    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit');
+    Route::put('/{id}',         $controllers->update)->name($name.'.update');
+    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy');
 });
