@@ -53,7 +53,7 @@ class ProvinceController extends Controller
     {
         $provinces = $this->indonesia->allProvinces();
 
-        foreach($provinces as $province){
+        foreach ($provinces as $province){
             array_set($province, 'label', $province->name);
         }
 

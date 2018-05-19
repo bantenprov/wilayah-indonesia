@@ -53,7 +53,7 @@ class VillageController extends Controller
     {
         $villages = $this->indonesia->allVillages();
 
-        foreach($villages as $village){
+        foreach ($villages as $village){
             array_set($village, 'label', $village->name);
         }
 
@@ -80,7 +80,7 @@ class VillageController extends Controller
             $villages = $this->village->getAttributes();
         }
 
-        foreach($villages as $village){
+        foreach ($villages as $village){
             array_set($village, 'label', $village->name);
         }
 

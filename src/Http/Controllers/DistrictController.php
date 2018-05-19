@@ -53,7 +53,7 @@ class DistrictController extends Controller
     {
         $districts = $this->indonesia->allDistricts();
 
-        foreach($districts as $district){
+        foreach ($districts as $district){
             array_set($district, 'label', $district->name);
         }
 
@@ -80,7 +80,7 @@ class DistrictController extends Controller
             $districts = $this->district->getAttributes();
         }
 
-        foreach($districts as $district){
+        foreach ($districts as $district){
             array_set($district, 'label', $district->name);
         }
 

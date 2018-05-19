@@ -53,7 +53,7 @@ class CityController extends Controller
     {
         $cities = $this->indonesia->allCities();
 
-        foreach($cities as $city){
+        foreach ($cities as $city) {
             array_set($city, 'label', $city->name);
         }
 
@@ -80,7 +80,7 @@ class CityController extends Controller
             $cities = $this->city->getAttributes();
         }
 
-        foreach($cities as $city){
+        foreach ($cities as $city){
             array_set($city, 'label', $city->name);
         }
 
