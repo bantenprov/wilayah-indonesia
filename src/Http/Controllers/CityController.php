@@ -58,8 +58,8 @@ class CityController extends Controller
         }
 
         $response['cities']     = $cities;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -85,8 +85,8 @@ class CityController extends Controller
         }
 
         $response['cities']     = $cities;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -105,8 +105,8 @@ class CityController extends Controller
         array_set($city, 'label', $city->name);
 
         $response['city']       = $city;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);

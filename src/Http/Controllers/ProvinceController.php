@@ -58,8 +58,8 @@ class ProvinceController extends Controller
         }
 
         $response['provinces']  = $provinces;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -78,8 +78,8 @@ class ProvinceController extends Controller
         array_set($provinces, 'label', $provinces->name);
 
         $response['provinces']  = $provinces;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
