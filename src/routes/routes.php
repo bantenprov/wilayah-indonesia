@@ -41,7 +41,7 @@ Route::group(['prefix' => 'wilayah-indonesia'], function() {
 
 });
 
-Route::group(['prefix' => 'api/wilayah-indonesia/province', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => 'api/wilayah-indonesia/province', 'middleware' => ['auth', 'role:superadministrator|admin_sekolah']], function() {
     $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\ProvinceController';
     $name           = 'wilayah-indonesia.province';
     $controllers    = (object) [
@@ -55,17 +55,17 @@ Route::group(['prefix' => 'api/wilayah-indonesia/province', 'middleware' => ['au
         'destroy'   => $class.'@destroy',
     ];
 
-    Route::get('/',             $controllers->index)->name($name.'.index')->middleware([]);
-    Route::get('/get',          $controllers->get)->name($name.'.get')->middleware([]);
-    Route::get('/create',       $controllers->create)->name($name.'.create')->middleware([]);
-    Route::get('/{id}',         $controllers->show)->name($name.'.show')->middleware([]);
-    Route::post('/',            $controllers->store)->name($name.'.store')->middleware([]);
-    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit')->middleware([]);
-    Route::put('/{id}',         $controllers->update)->name($name.'.update')->middleware([]);
-    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy')->middleware([]);
+    Route::get('/',             $controllers->index)->name($name.'.index')->middleware(['role:superadministrator']);
+    Route::get('/get',          $controllers->get)->name($name.'.get')->middleware(['role:superadministrator|admin_sekolah']);
+    Route::get('/create',       $controllers->create)->name($name.'.create')->middleware(['role:superadministrator']);
+    Route::get('/{id}',         $controllers->show)->name($name.'.show')->middleware(['role:superadministrator']);
+    Route::post('/',            $controllers->store)->name($name.'.store')->middleware(['role:superadministrator']);
+    Route::get('/{id}/edit',    $controllers->edit)->name($name.'.edit')->middleware(['role:superadministrator']);
+    Route::put('/{id}',         $controllers->update)->name($name.'.update')->middleware(['role:superadministrator']);
+    Route::delete('/{id}',      $controllers->destroy)->name($name.'.destroy')->middleware(['role:superadministrator']);
 });
 
-Route::group(['prefix' => 'api/wilayah-indonesia/city', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => 'api/wilayah-indonesia/city', 'middleware' => ['auth', 'role:superadministrator|admin_sekolah']], function() {
     $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\CityController';
     $name           = 'wilayah-indonesia.city';
     $controllers    = (object) [
@@ -80,18 +80,18 @@ Route::group(['prefix' => 'api/wilayah-indonesia/city', 'middleware' => ['auth']
         'destroy'       => $class.'@destroy',
     ];
 
-    Route::get('/',                     $controllers->index)->name($name.'.index')->middleware([]);
-    Route::get('/get',                  $controllers->get)->name($name.'.get')->middleware([]);
-    Route::get('/get/by-province/{id}', $controllers->getByProvince)->name($name.'.get-by-province')->middleware([]);
-    Route::get('/create',               $controllers->create)->name($name.'.create')->middleware([]);
-    Route::get('/{id}',                 $controllers->show)->name($name.'.show')->middleware([]);
-    Route::post('/',                    $controllers->store)->name($name.'.store')->middleware([]);
-    Route::get('/{id}/edit',            $controllers->edit)->name($name.'.edit')->middleware([]);
-    Route::put('/{id}',                 $controllers->update)->name($name.'.update')->middleware([]);
-    Route::delete('/{id}',              $controllers->destroy)->name($name.'.destroy')->middleware([]);
+    Route::get('/',                     $controllers->index)->name($name.'.index')->middleware(['role:superadministrator']);
+    Route::get('/get',                  $controllers->get)->name($name.'.get')->middleware(['role:superadministrator']);
+    Route::get('/get/by-province/{id}', $controllers->getByProvince)->name($name.'.get-by-province')->middleware(['role:superadministrator|admin_sekolah']);
+    Route::get('/create',               $controllers->create)->name($name.'.create')->middleware(['role:superadministrator']);
+    Route::get('/{id}',                 $controllers->show)->name($name.'.show')->middleware(['role:superadministrator']);
+    Route::post('/',                    $controllers->store)->name($name.'.store')->middleware(['role:superadministrator']);
+    Route::get('/{id}/edit',            $controllers->edit)->name($name.'.edit')->middleware(['role:superadministrator']);
+    Route::put('/{id}',                 $controllers->update)->name($name.'.update')->middleware(['role:superadministrator']);
+    Route::delete('/{id}',              $controllers->destroy)->name($name.'.destroy')->middleware(['role:superadministrator']);
 });
 
-Route::group(['prefix' => 'api/wilayah-indonesia/district', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => 'api/wilayah-indonesia/district', 'middleware' => ['auth', 'role:superadministrator|admin_sekolah']], function() {
     $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\DistrictController';
     $name           = 'wilayah-indonesia.district';
     $controllers    = (object) [
@@ -106,18 +106,18 @@ Route::group(['prefix' => 'api/wilayah-indonesia/district', 'middleware' => ['au
         'destroy'   => $class.'@destroy',
     ];
 
-    Route::get('/',                 $controllers->index)->name($name.'.index')->middleware([]);
-    Route::get('/get',              $controllers->get)->name($name.'.get')->middleware([]);
-    Route::get('/get/by-city/{id}', $controllers->getByCity)->name($name.'.get-by-city')->middleware([]);
-    Route::get('/create',           $controllers->create)->name($name.'.create')->middleware([]);
-    Route::get('/{id}',             $controllers->show)->name($name.'.show')->middleware([]);
-    Route::post('/',                $controllers->store)->name($name.'.store')->middleware([]);
-    Route::get('/{id}/edit',        $controllers->edit)->name($name.'.edit')->middleware([]);
-    Route::put('/{id}',             $controllers->update)->name($name.'.update')->middleware([]);
-    Route::delete('/{id}',          $controllers->destroy)->name($name.'.destroy')->middleware([]);
+    Route::get('/',                 $controllers->index)->name($name.'.index')->middleware(['role:superadministrator']);
+    Route::get('/get',              $controllers->get)->name($name.'.get')->middleware(['role:superadministrator']);
+    Route::get('/get/by-city/{id}', $controllers->getByCity)->name($name.'.get-by-city')->middleware(['role:superadministrator|admin_sekolah']);
+    Route::get('/create',           $controllers->create)->name($name.'.create')->middleware(['role:superadministrator']);
+    Route::get('/{id}',             $controllers->show)->name($name.'.show')->middleware(['role:superadministrator']);
+    Route::post('/',                $controllers->store)->name($name.'.store')->middleware(['role:superadministrator']);
+    Route::get('/{id}/edit',        $controllers->edit)->name($name.'.edit')->middleware(['role:superadministrator']);
+    Route::put('/{id}',             $controllers->update)->name($name.'.update')->middleware(['role:superadministrator']);
+    Route::delete('/{id}',          $controllers->destroy)->name($name.'.destroy')->middleware(['role:superadministrator']);
 });
 
-Route::group(['prefix' => 'api/wilayah-indonesia/village', 'middleware' => ['auth']], function() {
+Route::group(['prefix' => 'api/wilayah-indonesia/village', 'middleware' => ['auth', 'role:superadministrator|admin_sekolah']], function() {
     $class          = 'Bantenprov\WilayahIndonesia\Http\Controllers\VillageController';
     $name           = 'wilayah-indonesia.village';
     $controllers    = (object) [
@@ -132,13 +132,13 @@ Route::group(['prefix' => 'api/wilayah-indonesia/village', 'middleware' => ['aut
         'destroy'       => $class.'@destroy',
     ];
 
-    Route::get('/',                     $controllers->index)->name($name.'.index')->middleware([]);
-    Route::get('/get',                  $controllers->get)->name($name.'.get')->middleware([]);
-    Route::get('/get/by-district/{id}', $controllers->getByDistrict)->name($name.'.get-by-district')->middleware([]);
-    Route::get('/create',               $controllers->create)->name($name.'.create')->middleware([]);
-    Route::get('/{id}',                 $controllers->show)->name($name.'.show')->middleware([]);
-    Route::post('/',                    $controllers->store)->name($name.'.store')->middleware([]);
-    Route::get('/{id}/edit',            $controllers->edit)->name($name.'.edit')->middleware([]);
-    Route::put('/{id}',                 $controllers->update)->name($name.'.update')->middleware([]);
-    Route::delete('/{id}',              $controllers->destroy)->name($name.'.destroy')->middleware([]);
+    Route::get('/',                     $controllers->index)->name($name.'.index')->middleware(['role:superadministrator']);
+    Route::get('/get',                  $controllers->get)->name($name.'.get')->middleware(['role:superadministrator']);
+    Route::get('/get/by-district/{id}', $controllers->getByDistrict)->name($name.'.get-by-district')->middleware(['role:superadministrator|admin_sekolah']);
+    Route::get('/create',               $controllers->create)->name($name.'.create')->middleware(['role:superadministrator']);
+    Route::get('/{id}',                 $controllers->show)->name($name.'.show')->middleware(['role:superadministrator']);
+    Route::post('/',                    $controllers->store)->name($name.'.store')->middleware(['role:superadministrator']);
+    Route::get('/{id}/edit',            $controllers->edit)->name($name.'.edit')->middleware(['role:superadministrator']);
+    Route::put('/{id}',                 $controllers->update)->name($name.'.update')->middleware(['role:superadministrator']);
+    Route::delete('/{id}',              $controllers->destroy)->name($name.'.destroy')->middleware(['role:superadministrator']);
 });
