@@ -53,13 +53,13 @@ class DistrictController extends Controller
     {
         $districts = $this->indonesia->allDistricts();
 
-        foreach($districts as $district){
+        foreach ($districts as $district){
             array_set($district, 'label', $district->name);
         }
 
         $response['districts']  = $districts;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -80,13 +80,13 @@ class DistrictController extends Controller
             $districts = $this->district->getAttributes();
         }
 
-        foreach($districts as $district){
+        foreach ($districts as $district){
             array_set($district, 'label', $district->name);
         }
 
         $response['districts']  = $districts;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -105,8 +105,8 @@ class DistrictController extends Controller
         array_set($district, 'label', $district->name);
 
         $response['district']   = $district;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);

@@ -53,13 +53,13 @@ class CityController extends Controller
     {
         $cities = $this->indonesia->allCities();
 
-        foreach($cities as $city){
+        foreach ($cities as $city) {
             array_set($city, 'label', $city->name);
         }
 
         $response['cities']     = $cities;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -80,13 +80,13 @@ class CityController extends Controller
             $cities = $this->city->getAttributes();
         }
 
-        foreach($cities as $city){
+        foreach ($cities as $city){
             array_set($city, 'label', $city->name);
         }
 
         $response['cities']     = $cities;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -105,8 +105,8 @@ class CityController extends Controller
         array_set($city, 'label', $city->name);
 
         $response['city']       = $city;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);

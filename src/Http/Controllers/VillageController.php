@@ -53,13 +53,13 @@ class VillageController extends Controller
     {
         $villages = $this->indonesia->allVillages();
 
-        foreach($villages as $village){
+        foreach ($villages as $village){
             array_set($village, 'label', $village->name);
         }
 
         $response['villages']   = $villages;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -80,13 +80,13 @@ class VillageController extends Controller
             $villages = $this->village->getAttributes();
         }
 
-        foreach($villages as $village){
+        foreach ($villages as $village){
             array_set($village, 'label', $village->name);
         }
 
         $response['villages']   = $villages;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
@@ -105,8 +105,8 @@ class VillageController extends Controller
         array_set($village, 'label', $village->name);
 
         $response['village']    = $village;
-        $response['message']    = 'Success';
         $response['error']      = false;
+        $response['message']    = 'Loaded';
         $response['status']     = true;
 
         return response()->json($response);
